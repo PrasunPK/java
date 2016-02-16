@@ -3,13 +3,13 @@ class Person{
 
     private int id;
 
-    public Person(String personName, int id){
-        this.name = personName;
+    public Person(Name personName, int id){
+        this.name = personName.getFirstName() + " " + personName.getlastName();
         this.id = id;
     }
 
-    public Person(String personName){
-        this.name = personName;
+    public Person(Name personName){
+        this.name = personName.getFirstName() + " " + personName.getlastName();
     }
 
     private void printPerson(){
