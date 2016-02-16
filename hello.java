@@ -1,10 +1,11 @@
 class hello{
     public static void main(String[] args) {
         Name jh = new Name("Johny","Edger");
-
-        Person person1 = new Person(jh);
+        Person person1 = Person.createPersonWithName(jh);
         person1.print();
 
-        // Person jack = new Person("Jack");
+        Name jk = new Name("Jack","Marvel");
+        Person person2 = Person.createPersonWithAge(jk,30);
+        person2.print();
     }
 }

@@ -1,19 +1,27 @@
 class Person{
     private String name;
 
-    private int id;
+    private int age;
 
-    public Person(Name personName, int id){
+    private Person(Name personName, int age){
         this.name = personName.getFirstName() + " " + personName.getlastName();
-        this.id = id;
+        this.age = age;
     }
 
-    public Person(Name personName){
+    private Person(Name personName){
         this.name = personName.getFirstName() + " " + personName.getlastName();
+    }
+
+    public static Person createPersonWithName(Name personName){
+        return new Person(personName);
+    }
+
+    public static Person createPersonWithAge(Name personName, int age){
+        return new Person(personName,age);
     }
 
     private void printPerson(){
-        System.out.println(this.name + " has the ID "+ this.id);
+        System.out.println(this.name + " with age "+ this.age);
     }
 
     public void print(){
