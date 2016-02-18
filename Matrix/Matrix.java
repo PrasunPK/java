@@ -15,7 +15,7 @@ public class Matrix{
         matrix = new int[row][column];
     }
 
-    public void fill(int[] values){
+    public void fillWith(int[] values){
         int rowNumber = 0;
         int colNumber = 0;
         int valueCounter = 0;
@@ -29,13 +29,12 @@ public class Matrix{
         }
     }
 
-    // private boolean isInSameOrder(Matrix matrix_to_add){
-    //     return this.row == matrix_to_add.row && this.column == matrix_to_add.column;
-    // }
+    private boolean isInSameOrder(Matrix matrix_to_add){
+        return this.row == matrix_to_add.row && this.column == matrix_to_add.column;
+    }
 
     public Matrix add(Matrix matrix_to_add){
-        // if(!isInSameOrder(matrix_to_add))
-        //     return new Matrix();
+        if(!isInSameOrder(matrix_to_add)) return new Matrix();
         Matrix resultingMatrix = new Matrix(row,column);
         for(int i = 0; i < row; i++)
             for(int j = 0; j < column; j++)
@@ -60,5 +59,14 @@ public class Matrix{
             }
         }
         return true;
+    }
+
+    private boolean isValidPosition(int row, int column){
+        return (row < this.row) && (column < this.column);
+    }
+
+    public void changeElementAt(int row,int column, int value){
+        if(this.isValidPosition(row,column))
+            this.matrix[row][column] = value;
     }
 }
