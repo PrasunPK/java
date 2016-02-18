@@ -83,7 +83,7 @@ public class Matrix{
             for (int j = 0; j < column; j++) {
                 for(int k = 0; k < column; k++)
                     sum += this.matrix[i][k]*matrix_to_multiply.matrix[k][j];
-                resultingMatrix.matrix[i][j] = sum;
+                resultingMatrix.putElementAt(i,j,sum);
                 sum = 0;
             }
         }

@@ -63,7 +63,7 @@ public class MatrixTest{
     }
 
     @Test
-    public void multiply_multiplies_two_matrices_with_same_order(){
+    public void multiply_multiplies_two_2_by_2_matrices(){
         int []first_matrix = {1,2,3,4};
         Matrix matrix = Matrix.createMatrix(2,2,first_matrix);
 
@@ -73,6 +73,20 @@ public class MatrixTest{
         Matrix actual = matrix.multiply(matrix_to_multiply);
 
         int []expected = {7,10,15,22};
+        assertTrue(actual.isEqualTo(expected));
+    }
+
+    @Test
+    public void multiply_multiplies_two_3_by_3_matrices(){
+        int []first_matrix = {1,2,3,4,6,7,5,2,1};
+        Matrix matrix = Matrix.createMatrix(3,3,first_matrix);
+
+        int []second_matrix = {2,3,1,6,4,2,7,3,1};
+        Matrix matrix_to_multiply = Matrix.createMatrix(3,3,second_matrix);
+
+        Matrix actual = matrix.multiply(matrix_to_multiply);
+
+        int []expected = {35,20,8,93,57,23,29,26,10};
         assertTrue(actual.isEqualTo(expected));
     }
 
