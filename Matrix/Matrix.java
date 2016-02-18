@@ -6,6 +6,7 @@ public class Matrix{
     public Matrix(){
         row = 0;
         column = 0;
+        matrix = new int[row][column];
     }
 
     public Matrix(int rows, int columns){
@@ -14,19 +15,27 @@ public class Matrix{
         matrix = new int[row][column];
     }
 
-    public void fill(int[][] values){
-        for(int i = 0; i < row; i++)
-            for(int j = 0; j < column; j++)
-                matrix[i][j] = values[i][j];
+    public void fill(int[] values){
+        int rowNumber = 0;
+        int colNumber = 0;
+        int valueCounter = 0;
+        while(valueCounter < values.length){
+            matrix[rowNumber][colNumber] = values[valueCounter++];
+            colNumber++;
+            if(colNumber == column){
+                rowNumber++;
+                colNumber = 0;
+            }
+        }
     }
 
-    private boolean isInSameOrder(Matrix matrix_to_add){
-        return this.row == matrix_to_add.row && this.column == matrix_to_add.column;
-    }
+    // private boolean isInSameOrder(Matrix matrix_to_add){
+    //     return this.row == matrix_to_add.row && this.column == matrix_to_add.column;
+    // }
 
     public Matrix add(Matrix matrix_to_add){
-        if(!isInSameOrder(matrix_to_add))
-            return new Matrix(0,0);
+        // if(!isInSameOrder(matrix_to_add))
+        //     return new Matrix();
         Matrix resultingMatrix = new Matrix(row,column);
         for(int i = 0; i < row; i++)
             for(int j = 0; j < column; j++)
@@ -34,7 +43,22 @@ public class Matrix{
         return resultingMatrix;
     }
 
-    public int[][] getMatrix(){
-        return this.matrix;
+    private boolean isValueAt(int row,int column,int value){
+        return this.matrix[row][column] == value;
+    }
+
+    public boolean isEqualTo(int[] expectedMatrix){
+        int rowNumber = 0;
+        int colNumber = 0;
+        int valueCounter = 0;
+        while(valueCounter < expectedMatrix.length){
+            if(! this.isValueAt(rowNumber,colNumber,expectedMatrix[valueCounter++])) return false;
+            colNumber++;
+            if(colNumber >= column){
+                rowNumber++;
+                colNumber = 0;
+            }
+        }
+        return true;
     }
 }
