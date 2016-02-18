@@ -3,30 +3,45 @@ public class Matrix{
 
     private int[][] matrix;
 
-    public Matrix(){
+    public static Matrix createMatrix(int rows,int columns, int []values){
+        Matrix newMatrix = new Matrix(rows,columns);
+        newMatrix.fillWith(values);
+        return newMatrix;
+    }
+
+    private Matrix(){
         row = 0;
         column = 0;
         matrix = new int[row][column];
     }
 
-    public Matrix(int rows, int columns){
+    private Matrix(int rows, int columns){
         row = rows;
         column = columns;
         matrix = new int[row][column];
     }
 
-    public void fillWith(int[] values){
+    private void fillWith(int[] values){
         int rowNumber = 0;
         int colNumber = 0;
         int valueCounter = 0;
         while(valueCounter < values.length){
-            matrix[rowNumber][colNumber] = values[valueCounter++];
+            this.putElementAt(rowNumber,colNumber,values[valueCounter++]);
             colNumber++;
             if(colNumber == column){
                 rowNumber++;
                 colNumber = 0;
             }
         }
+    }
+
+    private boolean isValidPosition(int row, int column){
+        return (row < this.row) && (column < this.column);
+    }
+
+    private void putElementAt(int row,int column, int value){
+        if(this.isValidPosition(row,column))
+        this.matrix[row][column] = value;
     }
 
     private boolean isInSameOrder(Matrix matrix_to_add){
@@ -61,12 +76,17 @@ public class Matrix{
         return true;
     }
 
-    private boolean isValidPosition(int row, int column){
-        return (row < this.row) && (column < this.column);
-    }
-
-    public void changeElementAt(int row,int column, int value){
-        if(this.isValidPosition(row,column))
-            this.matrix[row][column] = value;
+    public Matrix multiply(Matrix matrix_to_multiply){
+        Matrix resultingMatrix = new Matrix(row,column);
+        int sum = 0;
+        for (int i = 0; i < row; i++){
+            for (int j = 0; j < column; j++) {
+                for(int k = 0; k < column; k++)
+                    sum += this.matrix[i][k]*matrix_to_multiply.matrix[k][j];
+                resultingMatrix.matrix[i][j] = sum;
+                sum = 0;
+            }
+        }
+        return resultingMatrix;
     }
 }
