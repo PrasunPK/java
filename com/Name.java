@@ -1,4 +1,6 @@
-class Name{
+package com;
+
+public class Name{
     private String first;
     private String last;
 
