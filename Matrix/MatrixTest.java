@@ -90,4 +90,33 @@ public class MatrixTest{
         assertTrue(actual.isEqualTo(expected));
     }
 
+    @Test
+    public void multiply_multiplies_2_by_3_and_3_by_2_matrices(){
+        int []first_matrix = {1,2,3,4,5,6};
+        Matrix matrix = Matrix.createMatrix(2,3,first_matrix);
+
+        int []second_matrix = {2,4,3,6,7,2};
+        Matrix matrix_to_multiply = Matrix.createMatrix(3,2,second_matrix);
+
+        Matrix actual = matrix.multiply(matrix_to_multiply);
+
+        int []expected = {29,22,65,58};
+        assertTrue(actual.isEqualTo(expected));
+    }
+
+    @Test
+    public void multiply_gives_null_matrix_when_2_by_3_and_2_by_3_matrix_is_multiplied(){
+        int []first_matrix = {1,2,3,4,5,6};
+        Matrix matrix = Matrix.createMatrix(2,3,first_matrix);
+
+        int []second_matrix = {2,4,3,6,7,2};
+        Matrix matrix_to_multiply = Matrix.createMatrix(2,3,second_matrix);
+
+        Matrix actual = matrix.multiply(matrix_to_multiply);
+
+        int []expected = {};
+        assertTrue(actual.isEqualTo(expected));
+    }
+
+
 }

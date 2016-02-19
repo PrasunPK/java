@@ -76,12 +76,17 @@ public class Matrix{
         return true;
     }
 
+    private boolean isMultiplicable(Matrix matrix_to_multiply){
+        return this.row == matrix_to_multiply.column && this.column == matrix_to_multiply.row ;
+    }
+
     public Matrix multiply(Matrix matrix_to_multiply){
-        Matrix resultingMatrix = new Matrix(row,column);
+        if(!this.isMultiplicable(matrix_to_multiply)) return new Matrix();
+        Matrix resultingMatrix = new Matrix(this.row,matrix_to_multiply.column);
         int sum = 0;
-        for (int i = 0; i < row; i++){
-            for (int j = 0; j < column; j++) {
-                for(int k = 0; k < column; k++)
+        for (int i = 0; i < this.row; i++){
+            for (int j = 0; j < matrix_to_multiply.column; j++) {
+                for(int k = 0; k < this.column; k++)
                     sum += this.matrix[i][k]*matrix_to_multiply.matrix[k][j];
                 resultingMatrix.putElementAt(i,j,sum);
                 sum = 0;
