@@ -154,11 +154,48 @@ public class MatrixTest{
 
     @Test
     public void determinant_provides_the_determinant_of_a_3_by_3_matrix_resulting_non_zero_value(){
-        int []first_matrix = {1,3,2,9,1,2,2,1,3};
+        int []first_matrix = {1,3,2,
+                              9,1,2,
+                              2,1,3};
         Matrix matrix = Matrix.createMatrix(3,3,first_matrix);
 
         int actual = matrix.determinant();
         int expected = -54;
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void determinant_provides_the_determinant_of_a_4_by_4_matrix_resulting_non_zero_value(){
+        int []first_matrix = {3,0,2,-1,
+                              1,2,0,-2,
+                              4,0,6,-3,
+                              5,0,2,0};
+        Matrix matrix = Matrix.createMatrix(4,4,first_matrix);
+
+        int actual = matrix.determinant();
+        int expected = 20;
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void determinant_provides_the_determinant_of_a_10_by_10_matrix(){
+        int []first_matrix = {1,2,3,4,5,6,7,8,9,
+                             1,2,3,4,5,6,7,8,9,
+                             1,2,3,4,5,6,7,8,9,
+                             1,2,3,4,5,6,7,8,9,
+                             1,2,3,4,5,6,7,8,9,
+                             1,2,3,4,5,6,7,8,9,
+                             1,2,3,4,5,6,7,8,9,
+                             1,2,3,4,5,6,7,8,9,
+                             1,2,3,4,5,6,7,8,9,
+                             1,2,3,4,5,6,7,8,9,
+                             1,2,3,4,5,6,7,8,9,1};
+        Matrix matrix = Matrix.createMatrix(10,10,first_matrix);
+
+        int actual = matrix.determinant();
+        int expected = 0;
 
         assertEquals(expected,actual);
     }

@@ -1,7 +1,7 @@
 public class Matrix{
-    private int row,column;
+    final private int row,column;
 
-    private int[][] matrix;
+    final private int[][] matrix;
 
     public static Matrix createMatrix(int rows,int columns, int []values){
         Matrix newMatrix = new Matrix(rows,columns);
@@ -96,7 +96,7 @@ public class Matrix{
 
     public int determinant(){
         if(!this.isSquare()) return 0;
-        return getDeterminant(this.matrix,0);
+        return getDeterminant(this.matrix);
     }
 
     private boolean isSquare(){
@@ -127,15 +127,15 @@ public class Matrix{
         return -1;
     }
 
-    private int getDeterminant(int [][] matrix,int determinant){
+    private int getDeterminant(int [][] matrix){
+        int determinant = 0;
         if(matrix.length == 1) return matrix[0][0];
         if(matrix.length == 2) return determinantOfTwoByTwo(matrix);
-        int signed = -1;
-        for(int i = 0; i < matrix.length; i++){
-            int [][] coefficentMatrix = getCoefficentMatrix(matrix,i);
-            determinant += sign(i) * matrix[0][i] * getDeterminant(coefficentMatrix,determinant);
+        for(int col = 0; col < matrix.length; col++){
+            int [][] coefficentMatrix = getCoefficentMatrix(matrix,col);
+            determinant += (sign(col) * matrix[0][col] * getDeterminant(coefficentMatrix));
         }
-        return (determinant);
+        return determinant;
     }
 
 }
