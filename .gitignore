@@ -2,3 +2,7 @@
 makefile
 hamcrest-core-1.3.jar
 junit-4.12.jar
+Matrix/lib/
+Matrix/out/
+Matrix/build/
+run.sh
