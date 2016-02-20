@@ -120,14 +120,47 @@ public class MatrixTest{
     }
 
     @Test
-    public void determinant_provides_the_determinant_of_a_matrix(){
+    public void determinant_provides_the_determinant_of_a_2_by_2_matrix(){
         int []first_matrix = {1,2,3,4};
         Matrix matrix = Matrix.createMatrix(2,2,first_matrix);
 
         int actual = matrix.determinant();
         int expected = -2;
 
-        assertEquals(actual,expected);
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void determinant_provides_the_determinant_of_a_1_by_1_matrix(){
+        int []first_matrix = {5};
+        Matrix matrix = Matrix.createMatrix(1,1,first_matrix);
+
+        int actual = matrix.determinant();
+        int expected = 5;
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void determinant_provides_the_determinant_of_a_3_by_3_matrix(){
+        int []first_matrix = {1,2,3,4,5,6,7,8,9};
+        Matrix matrix = Matrix.createMatrix(3,3,first_matrix);
+
+        int actual = matrix.determinant();
+        int expected = 0;
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void determinant_provides_the_determinant_of_a_3_by_3_matrix_resulting_non_zero_value(){
+        int []first_matrix = {1,3,2,9,1,2,2,1,3};
+        Matrix matrix = Matrix.createMatrix(3,3,first_matrix);
+
+        int actual = matrix.determinant();
+        int expected = -54;
+
+        assertEquals(expected,actual);
     }
 
 }

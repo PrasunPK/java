@@ -94,27 +94,48 @@ public class Matrix{
         return resultingMatrix;
     }
 
+    public int determinant(){
+        if(!this.isSquare()) return 0;
+        return getDeterminant(this.matrix,0);
+    }
+
     private boolean isSquare(){
         return this.row == this.column;
     }
 
-    private int getMinor(){
-        int determinant = 0;
-        for (int i = 0; i < this.column-1 ; i++)
-            for (int j = 0; j < this.row ; j++ ) {
-                if ((i+j)%2 == 0)
-                    determinant += this.matrix[i][j] * this.matrix[this.column-1 - i][this.row-1 - j];
-                else
-                    determinant += (-1) * this.matrix[i][j] * this.matrix[this.column-1 - i][this.row-1 - j];
-            }
-        return determinant;
+    private int determinantOfTwoByTwo(int [][]matrix){
+        return (matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0]);
     }
 
-    public int determinant(){
-        if(!this.isSquare()) return 0; // to be changed to error
-        int determinant = this.getMinor();
+    private int [][] getCoefficentMatrix(int [][]original, int index){
+        int rows = original.length-1;
+        int cols = original.length-1;
+        int [][]newMatrix = new int[rows][cols];
+        for (int i = 1; i < original.length; i++ ) {
+            for(int j = 0; j < original.length; j++ ){
+                if(index < j)
+                    newMatrix[i-1][j-1] = original[i][j];
+                if(index > j)
+                    newMatrix[i-1][j] = original[i][j];
+            }
+        }
+        return newMatrix;
+    }
 
-        return determinant;
+    private int sign(int index){
+        if(index%2==0) return 1;
+        return -1;
+    }
+
+    private int getDeterminant(int [][] matrix,int determinant){
+        if(matrix.length == 1) return matrix[0][0];
+        if(matrix.length == 2) return determinantOfTwoByTwo(matrix);
+        int signed = -1;
+        for(int i = 0; i < matrix.length; i++){
+            int [][] coefficentMatrix = getCoefficentMatrix(matrix,i);
+            determinant += sign(i) * matrix[0][i] * getDeterminant(coefficentMatrix,determinant);
+        }
+        return (determinant);
     }
 
 }
