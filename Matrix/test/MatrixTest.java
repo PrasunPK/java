@@ -1,5 +1,6 @@
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
@@ -118,5 +119,15 @@ public class MatrixTest{
         assertTrue(actual.isEqualTo(expected));
     }
 
+    @Test
+    public void determinant_provides_the_determinant_of_a_matrix(){
+        int []first_matrix = {1,2,3,4};
+        Matrix matrix = Matrix.createMatrix(2,2,first_matrix);
+
+        int actual = matrix.determinant();
+        int expected = -2;
+
+        assertEquals(actual,expected);
+    }
 
 }

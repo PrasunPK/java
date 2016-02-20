@@ -44,8 +44,8 @@ public class Matrix{
         this.matrix[row][column] = value;
     }
 
-    private boolean isInSameOrder(Matrix matrix_to_add){
-        return this.row == matrix_to_add.row && this.column == matrix_to_add.column;
+    private boolean isInSameOrder(Matrix matrix_to_check){
+        return this.row == matrix_to_check.row && this.column == matrix_to_check.column;
     }
 
     public Matrix add(Matrix matrix_to_add){
@@ -84,14 +84,37 @@ public class Matrix{
         if(!this.isMultiplicable(matrix_to_multiply)) return new Matrix();
         Matrix resultingMatrix = new Matrix(this.row,matrix_to_multiply.column);
         int sum = 0;
-        for (int i = 0; i < this.row; i++){
+        for (int i = 0; i < this.row; i++)
             for (int j = 0; j < matrix_to_multiply.column; j++) {
                 for(int k = 0; k < this.column; k++)
                     sum += this.matrix[i][k]*matrix_to_multiply.matrix[k][j];
                 resultingMatrix.putElementAt(i,j,sum);
                 sum = 0;
             }
-        }
         return resultingMatrix;
     }
+
+    private boolean isSquare(){
+        return this.row == this.column;
+    }
+
+    private int getMinor(){
+        int determinant = 0;
+        for (int i = 0; i < this.column-1 ; i++)
+            for (int j = 0; j < this.row ; j++ ) {
+                if ((i+j)%2 == 0)
+                    determinant += this.matrix[i][j] * this.matrix[this.column-1 - i][this.row-1 - j];
+                else
+                    determinant += (-1) * this.matrix[i][j] * this.matrix[this.column-1 - i][this.row-1 - j];
+            }
+        return determinant;
+    }
+
+    public int determinant(){
+        if(!this.isSquare()) return 0; // to be changed to error
+        int determinant = this.getMinor();
+
+        return determinant;
+    }
+
 }
