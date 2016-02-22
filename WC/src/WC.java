@@ -1,4 +1,3 @@
-package src;
 public class WC {
     private String content;
 
