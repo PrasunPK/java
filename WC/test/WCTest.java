@@ -1,3 +1,4 @@
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
@@ -40,5 +41,14 @@ public class WCTest{
         WC wc = new WC(data);
         int lineCount = wc.countLines();
         assertEquals(2,lineCount);
+    }
+
+    @Test
+    public void test_countAll_provides_line_word_and_character_count_together(){
+        String data = "This is a file to implement File system in JAVA\n";
+        WC wc = new WC(data);
+        int []actualAllCount = wc.countAll();
+        int []expectedAllCount = {1,10,48};
+        assertArrayEquals(expectedAllCount,actualAllCount);
     }
 }

@@ -1,3 +1,4 @@
+package src;
 public class WC {
     private String content;
 
@@ -15,5 +16,14 @@ public class WC {
 
     public int countLines(){
         return this.content.split("\n").length;
+    }
+
+    public int[] countAll(){
+        int characters = this.countCharacters();
+        int words = this.countWords();
+        int lines = this.countLines();
+
+        int []allCount = {lines, words, characters};
+        return allCount;
     }
 }
