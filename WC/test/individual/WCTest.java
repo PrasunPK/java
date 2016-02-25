@@ -1,11 +1,10 @@
-package individual;
+package test.individual;
 
 import org.junit.Test;
 import src.individual.WC;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
-
 
 public class WCTest{
     @Test
