@@ -1,6 +1,11 @@
+package individual;
+
+import org.junit.Test;
+import src.individual.WC;
+
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
-import org.junit.Test;
+
 
 public class WCTest{
     @Test
@@ -24,12 +29,12 @@ public class WCTest{
         String data = "lalala...\nMy Name is Khan and I am Not a Bollywood Actor.";
         WC wc = new WC(data);
         int wordCount = wc.countWords();
-        assertEquals(11,wordCount);
+        assertEquals(12,wordCount);
     }
 
     @Test
     public void test_countLines_gets_the_total_number_of_lines(){
-        String data = "This is a file to implement File system in JAVA\n";
+        String data = "This is a file to implement File system in JAVA";
         WC wc = new WC(data);
         int lineCount = wc.countLines();
         assertEquals(1,lineCount);
@@ -37,7 +42,7 @@ public class WCTest{
 
     @Test
     public void test_countLines_gets_the_total_number_of_lines_if_there_are_multiple_lines(){
-        String data = "This is a file to implement File system in JAVA.\nWC is a very good util to get no of Words\n";
+        String data = "This is a file to implement File system in JAVA.\nWC is a very good util to get no of Words";
         WC wc = new WC(data);
         int lineCount = wc.countLines();
         assertEquals(2,lineCount);
@@ -45,10 +50,10 @@ public class WCTest{
 
     @Test
     public void test_countAll_provides_line_word_and_character_count_together(){
-        String data = "This is a file to implement File system in JAVA\n";
+        String data = "This is a file to implement File system in JAVA";
         WC wc = new WC(data);
         int []actualAllCount = wc.countAll();
-        int []expectedAllCount = {1,10,48};
+        int []expectedAllCount = {1,10,47};
         assertArrayEquals(expectedAllCount,actualAllCount);
     }
 }

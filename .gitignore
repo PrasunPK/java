@@ -9,3 +9,4 @@ run.sh
 WC/lib/
 WC/out/
 WC/build/
+poly/*.class
