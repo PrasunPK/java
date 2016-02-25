@@ -10,3 +10,5 @@ WC/lib/
 WC/out/
 WC/build/
 poly/*.class
+WC/.idea
+notes
