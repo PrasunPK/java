@@ -1,4 +1,4 @@
-import src.individual.WC;
+import individual.WC;
 
 import java.io.File;
 import java.io.FileNotFoundException;

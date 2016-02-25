@@ -1,4 +1,4 @@
-package src.individual;
+package individual;
 
 public class WC {
     private String content;
