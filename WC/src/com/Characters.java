@@ -1,4 +1,4 @@
-package src.individual;
+package com;
 
 public class Characters extends WC implements Represent{
     public Characters(String data){
@@ -6,7 +6,7 @@ public class Characters extends WC implements Represent{
     }
 
     @Override
-    public String toString(){
+    public String represent(){
         return this.countCharacters()+"\t";
     }
 }

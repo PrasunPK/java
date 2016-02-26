@@ -1,4 +1,4 @@
-package individual;
+package com;
 
 public class WC {
     private String content;

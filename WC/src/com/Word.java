@@ -1,4 +1,4 @@
-package src.individual;
+package com;
 
 public class Word extends WC implements Represent{
     public Word(String data){
@@ -6,7 +6,7 @@ public class Word extends WC implements Represent{
     }
 
     @Override
-    public String toString(){
+    public String represent(){
         return this.countWords()+"\t";
     }
 }
