@@ -3,52 +3,43 @@ package hash;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 
 public class HashTest {
 
     @Test
-    public void test_addEntry_to_add_a_given_value_to_the_list() {
+    public void test_to_put_value_in_proper_hashed_location(){
+        Hash<Integer, Integer> hash = new Hash<>();
+        hash.put(1,99);
+        hash.put(9,123);
+        assertEquals(123, (int)hash.get(9));
+        assertEquals(99, (int)hash.get(1));
+    }
+
+    @Test
+    public void test_get_to_give_the_value_when_a_valid_key_is_provided(){
         Hash<Integer, Integer> hash = new Hash<>();
         int key = 1;
         int value = 99;
-        assertTrue(hash.addEntry(key,value));
-        assertEquals(99, (int)hash.find(key));
+        hash.put(key,value);
+        assertEquals(99, (int)hash.get(key));
     }
 
-//    @Test
-//    public void test_getValue_gives_the_number_provided_the_given_key_is_valid() {
-//        Hash hash = new Hash();
-//        hash.addEntry(10, 99);
-//        assertEquals(99, hash.getElement(10));
-//    }
-//
-//    @Test
-//    public void test_addEntry_address_in_different_calculated_location_when_multiple_keys_and_values_are_given() {
-//        Hash hash = new Hash();
-//        hash.addEntry(12, 11);
-//        hash.addEntry(17, 233);
-//        hash.addEntry(13, 371);
-//        assertEquals(11, hash.getElement(12));
-//        assertEquals(233, hash.getElement(17));
-//        assertEquals(371, hash.getElement(13));
-//    }
-//
-//    @Test
-//    public void test_addEntry_does_not_override_existing_value_if_the_calculated_position_is_filled_already() {
-//        Hash hash = new Hash();
-//        hash.addEntry(10, 99);
-//        hash.addEntry(20, 199);
-//        assertEquals(99, hash.getElement(10));
-//    }
-//
-//    @Test
-//    public void test_addEntry_inserts_to_another_empty_location_if_the_calculated_position_is_filled_already() {
-//        Hash hash = new Hash();
-//        hash.addEntry(10, 99);
-//        hash.addEntry(11, 199);
-//        assertEquals(199, hash.getElement(11));
-//    }
+    @Test
+    public void test_to_put_and_override_if_same_key_is_given_with_value() throws Exception {
+        Hash<Integer, Integer> hash = new Hash<>();
+        hash.put(4,45);
+        assertEquals(45, (int)hash.get(4));
+        hash.put(4,91);
+        assertEquals(91, (int)hash.get(4));
+    }
 
+    @Test
+    public void test_if_collision_happens_the_value_is_put() throws Exception {
+        Hash<String, Integer> hash = new Hash<>();
+        hash.put("K",2016);
+        hash.put("18",9999);
+        assertEquals(2016, (int)hash.get("K"));
+        assertEquals(9999, (int)hash.get("18"));
+    }
 }

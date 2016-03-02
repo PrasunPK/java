@@ -1,23 +1,31 @@
 package hash;
 
 public class Hash<K, V> {
-    private V[] list;
     private int size = 10;
 
-    public Hash() {
-        list = (V[]) new Object[size];
-    }
+    private V[] list = (V[]) new Object[size];
 
-    public boolean addEntry(K key, V value) {
+    public void put(K key, V value) {
         list[position(key)] = value;
-        return true;
     }
 
     private int position(K key) {
-        return 0;
+        String givenKey = key.toString();
+        long hash = hash(givenKey);
+        return (int)hash % size;
     }
 
-    public V find(K key) {
+
+    public long hash(String str) {
+        long seed = 131;
+        long hash = 0;
+        for (int i = 0; i < str.length(); i++) {
+            hash = (hash * seed) + str.charAt(i);
+        }
+        return hash;
+    }
+
+    public V get(K key) {
         return list[position(key)];
     }
 }
