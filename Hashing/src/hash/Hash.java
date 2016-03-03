@@ -2,16 +2,30 @@ package hash;
 
 public class Hash<K, V> {
     private int size = 10;
+    private int noOfEntities = 0;
 
     private Entity[] list = new Entity[size];
 
-    public void put(K key, V value) {
+    public boolean put(K key, V value) {
         Entity<K, V> entity = new Entity<>(key, value);
         int position = position(key);
         if (list[position] == null) {
             list[position] = entity;
+            noOfEntities++;
+            return true;
         } else {
-            list[position].next = entity;
+            Entity currentEntity = list[position];
+            while (currentEntity != null) {
+                if (currentEntity.key == key) {
+                    currentEntity.next = entity;
+                    return true;
+                }
+                currentEntity = currentEntity.next;
+            }
+            entity.next = list[position];
+            list[position] = entity;
+            noOfEntities++;
+            return true;
         }
     }
 
@@ -46,5 +60,19 @@ public class Hash<K, V> {
         }
 
         return value;
+    }
+
+    public V remove(K key) {
+        int position = position(key);
+        Entity<K, V> entity = list[position];
+        V removedValue = entity.value;
+        entity.key = null;
+        entity.value = null;
+        noOfEntities--;
+        return removedValue;
+    }
+
+    public int getNoOfEntities() {
+        return noOfEntities;
     }
 }
