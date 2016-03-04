@@ -9,28 +9,30 @@ public class Name {
         this.lastName = lastName;
     }
 
-    public String casualName() {
+    private String casualName() {
         return firstName + " " + lastName;
     }
 
-    public String formalName() {
+    private String formalName() {
         return lastName + ", " + firstName;
     }
 
-    private boolean isMale(Gender gender) {
-        return gender == Gender.MALE;
+    private boolean isMale(String gender) {
+        return gender.equals("Male");
     }
 
-    public String withPrefix(Gender gender, String format) {
-        String name = "";
-        if (format.equals("casual")) {
+    public String withPrefix(String gender, String format) {
+        String name;
+        if (format.equals("casual"))
             name = casualName();
-        }else{
+        else
             name = formalName();
-        }
+        return addPrefix(name,gender);
+    }
+
+    private String addPrefix(String name, String gender) {
         if (isMale(gender))
             return Gender.MALE + " " + name;
         return Gender.FEMALE + " " + name;
-
     }
 }

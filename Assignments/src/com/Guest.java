@@ -2,22 +2,19 @@ package com;
 
 public class Guest {
     private Address address;
-    private int age;
-    private Gender gender;
+    private String age;
+    private String gender;
     private Name name;
 
-    public Guest(String firstName, String lastName, Gender gender, int age, String city, String state, String country) {
-        this.name = new Name(firstName, lastName);
+    public Guest(Name name, String gender, String age, Address address) {
+        this.name = name;
         this.gender = gender;
         this.age = age;
-        this.address = new Address(city, state, country);
+        this.address = address;
     }
 
-    public String getCountry(){
-        return address.getCountry();
-    }
-
-    public String getName(String option){
-        return name.withPrefix(gender, option);
+    @Override
+    public String toString() {
+        return this.name.withPrefix(gender, "casual");
     }
 }

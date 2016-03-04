@@ -10,8 +10,4 @@ public class Address {
         this.state = state;
         this.country = country;
     }
-
-    public String getCountry() {
-        return country;
-    }
 }
