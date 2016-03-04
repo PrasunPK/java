@@ -34,8 +34,8 @@ public class Country {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Country)) return false;
-        return Objects.equals(((Country) o).name, name);
+        return this == o
+                || (!(o instanceof Country))
+                || Objects.equals(((Country) o).name, name);
     }
 }
