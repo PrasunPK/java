@@ -26,13 +26,13 @@ public class Country {
         return ", ";
     }
 
-    public String[] getAll() {
+    public String[] getAll(String format) {
         List<String> allGuest = new ArrayList<>();
         Guest[] guests = new Guest[guestList.size()];
         guestList.toArray(guests);
         String[] allNames = new String[guestList.size()];
         for (Guest guest : guests)
-            allGuest.add(guest.toString() + delimiter() + this.name);
+            allGuest.add(guest.toString(format) + delimiter() + this.name);
         return allGuest.toArray(allNames);
     }
 

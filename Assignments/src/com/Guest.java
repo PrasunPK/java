@@ -13,8 +13,7 @@ public class Guest {
         this.address = address;
     }
 
-    @Override
-    public String toString() {
-        return this.name.withPrefix(gender, "casual");
+    public String toString(String option) {
+        return this.name.withPrefix(gender, option);
     }
 }

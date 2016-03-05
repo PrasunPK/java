@@ -34,7 +34,7 @@ public class GuestList {
         if (!countries.contains(countryToRetrieve))
             return new String[0];
         int position = countries.indexOf(countryToRetrieve);
-        return countries.get(position).getAll();
+        return countries.get(position).getAll(format);
     }
 
 
