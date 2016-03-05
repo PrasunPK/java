@@ -21,8 +21,8 @@ public class CountryTest {
         c.add(g1);
         c.add(g2);
         String []nameList = {
-                "Mr Brandt Huel",
-                "Ms Velma Bergstrom"
+                "Mr Brandt Huel, Macedonia",
+                "Ms Velma Bergstrom, Macedonia"
         };
 
         assertArrayEquals(nameList, c.getAll());

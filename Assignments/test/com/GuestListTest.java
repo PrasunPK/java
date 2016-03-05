@@ -16,12 +16,12 @@ public class GuestListTest {
         list.add("Velma","Bergstrom","Female","24","Katlynn view","Vermont","Macedonia");
 
         String []nameList = {
-                "Ms Julius Barrows",
-                "Mr Brandt Huel",
-                "Ms Velma Bergstrom"
+                "Ms Julius Barrows, Macedonia",
+                "Mr Brandt Huel, Macedonia",
+                "Ms Velma Bergstrom, Macedonia"
         };
 
-        assertArrayEquals(nameList, list.getFrom("Macedonia"));
+        assertArrayEquals(nameList, list.getFrom("Macedonia","casual"));
     }
 
 

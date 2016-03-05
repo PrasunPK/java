@@ -5,16 +5,16 @@ import java.util.List;
 import java.util.Objects;
 
 public class Country {
-    private ArrayList<Guest> list;
+    private ArrayList<Guest> guestList;
     private String name = null;
 
     public Country(String country) {
-        list = new ArrayList<Guest>();
+        guestList = new ArrayList<>();
         name = country;
     }
 
     public void add(Guest guest) {
-        list.add(guest);
+        guestList.add(guest);
     }
 
     @Override
@@ -22,13 +22,17 @@ public class Country {
         return name;
     }
 
+    private String delimiter(){
+        return ", ";
+    }
+
     public String[] getAll() {
-        List<String> allGuest = new ArrayList<String>();
-        Guest[] guests = new Guest[list.size()];
-        list.toArray(guests);
-        String[] allNames = new String[list.size()];
+        List<String> allGuest = new ArrayList<>();
+        Guest[] guests = new Guest[guestList.size()];
+        guestList.toArray(guests);
+        String[] allNames = new String[guestList.size()];
         for (Guest guest : guests)
-            allGuest.add(guest.toString());
+            allGuest.add(guest.toString() + delimiter() + this.name);
         return allGuest.toArray(allNames);
     }
 
