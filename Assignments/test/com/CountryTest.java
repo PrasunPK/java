@@ -21,11 +21,11 @@ public class CountryTest {
         c.add(g1);
         c.add(g2);
         String []nameList = {
-                "Mr Brandt Huel, Macedonia",
-                "Ms Velma Bergstrom, Macedonia"
+                "Mr Brandt Huel, Macedonia, 25",
+                "Ms Velma Bergstrom, Macedonia, 24"
         };
 
-        assertArrayEquals(nameList, c.getAll("casual"));
+        assertArrayEquals(nameList, c.getAll("casual",20));
     }
 
     @Test
@@ -36,10 +36,10 @@ public class CountryTest {
         c.add(g1);
         c.add(g2);
         String []nameList = {
-                "Mr Huel, Brandt, Macedonia",
-                "Ms Bergstrom, Velma, Macedonia"
+                "Mr Huel, Brandt, Macedonia, 25",
+                "Ms Bergstrom, Velma, Macedonia, 24"
         };
 
-        assertArrayEquals(nameList, c.getAll("formal"));
+        assertArrayEquals(nameList, c.getAll("formal",20));
     }
 }

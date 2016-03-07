@@ -29,13 +29,19 @@ public class GuestList {
         return list.add(guest);
     }
 
-    public String[] getFrom(String country, String format) {
+    public String[] getFrom(String format,int legalAge, String country) {
         Country countryToRetrieve = new Country(country);
         if (!countries.contains(countryToRetrieve))
-            return new String[0];
+            throw new RuntimeException("No such country");
         int position = countries.indexOf(countryToRetrieve);
-        return countries.get(position).getAll(format);
+        return countries.get(position).getAll(format,legalAge);
     }
 
 
+    public void addAll(String[] records) {
+        for (String record : records) {
+            String[] attribute = record.split(",");
+            this.add(attribute[0], attribute[1], attribute[2], attribute[3], attribute[4], attribute[5], attribute[6]);
+        }
+    }
 }

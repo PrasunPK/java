@@ -1,0 +1,75 @@
+Make a Library with features below
+
+Print labels on the invitation covers.
+Given data :
+           List of records in a file
+           Input data format :
+                             firstName,lastName,gender,age,city,state,country
+           Guest name representation :
+                                     Mr/Ms Name Surname
+                                     Mr/Ms Surname, Name
+           Prefix :
+                  Male - Mr
+                  Female - Ms
+_____________________________________________________________________________________
+Version : 1
+-----------
+
+$ cat records
+  Gavin,Hyatt,Male,36,Crooks ton,Illinois,Romania
+  Julius,Barrows,Female,18,Veda haven,Vermont,Macedonia
+
+$java LabelPrinter casual records
+$java LabelPrinter -c records         // This method has to be implemented
+  Mr Gavin Hyatt
+  Ms Julius Barrows
+
+$java LabelPrinter formal records
+ Mr Hyatt, Gavin
+ Ms Barrows, Barrows
+
+_____________________________________________________________________________________
+Guest name representation :
+                           Mr/Ms Name Surname, country
+                           Mr/Ms Surname, Name, country
+
+_____________________________________________________________________________________
+Version : 2
+-----------
+
+$ cat records
+  Gavin,Hyatt,Male,36,Crooks ton,Illinois,Romania
+  Julius,Barrows,Female,18,Veda haven,Vermont,Macedonia
+
+$java LabelPrinter casual Macedonia records
+$java LabelPrinter -c Macedonia records         // This method has to be implemented
+  Ms Julius Barrows, Macedonia
+
+$java LabelPrinter formal Macedonia records
+$java LabelPrinter -f Macedonia records         // This method has to be implemented
+ Ms Barrows, Julius, Macedonia
+
+_____________________________________________________________________________________
+
+Given user wants to view according to the age of drinking alcohol.
+
+Guest name representation :
+                           Mr/Ms Name Surname, country, age
+                           Mr/Ms Surname, Name, country, age
+
+_____________________________________________________________________________________
+
+Version : 3
+-----------
+
+$ cat records
+  Gavin,Hyatt,Male,36,Crooks ton,Illinois,Romania
+  Julius,Barrows,Female,28,Veda haven,Vermont,Macedonia
+
+$java LabelPrinter casual 20 records Macedonia
+$java LabelPrinter -c 20 records Macedonia         // This method has to be implemented
+  Ms Julius Barrows, Macedonia, 28
+
+$java LabelPrinter formal 20 records Romania
+$java LabelPrinter -f 20 records Romania         // This method has to be implemented
+  Ms Hyatt, Gavin, Romania, 36

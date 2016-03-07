@@ -10,4 +10,8 @@ public class Address {
         this.state = state;
         this.country = country;
     }
+
+    public String addCountryName(String guestName) {
+        return guestName + ", " + country;
+    }
 }

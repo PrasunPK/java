@@ -13,7 +13,11 @@ public class Guest {
         this.address = address;
     }
 
-    public String toString(String option) {
-        return this.name.withPrefix(gender, option);
+    public String represent(String option) {
+        return address.addCountryName(name.withPrefix(gender, option)) + ", " + age;
+    }
+
+    public boolean isAbleToConsumeAlcohol(int legalAge){
+      return  Integer.parseInt(age) >= legalAge;
     }
 }

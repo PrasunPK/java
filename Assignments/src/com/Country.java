@@ -17,23 +17,15 @@ public class Country {
         guestList.add(guest);
     }
 
-    @Override
-    public String toString() {
-        return name;
-    }
-
-    private String delimiter(){
-        return ", ";
-    }
-
-    public String[] getAll(String format) {
+    public String[] getAll(String format, int legalAge) {
         List<String> allGuest = new ArrayList<>();
-        Guest[] guests = new Guest[guestList.size()];
-        guestList.toArray(guests);
-        String[] allNames = new String[guestList.size()];
-        for (Guest guest : guests)
-            allGuest.add(guest.toString(format) + delimiter() + this.name);
-        return allGuest.toArray(allNames);
+        int count = 0;
+        for (Guest guest : guestList)
+            if (guest.isAbleToConsumeAlcohol(legalAge)) {
+                allGuest.add(guest.represent(format));
+                count++;
+            }
+        return allGuest.toArray(new String[count]);
     }
 
     @Override
