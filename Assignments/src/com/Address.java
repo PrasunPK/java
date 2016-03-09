@@ -1,17 +1,21 @@
 package com;
 
 public class Address {
-    private String city;
-    private String state;
-    private String country;
+    private City city;
+    private State state;
+    private Country country;
 
-    public Address(String city, String state, String country) {
+    public Address(City city, State state, Country country) {
         this.city = city;
         this.state = state;
         this.country = country;
     }
 
     public String addCountryName(String guestName) {
-        return guestName + ", " + country;
+        return String.format("%s, %s", guestName, country);
+    }
+
+    public boolean isSame(Country countryName) {
+        return this.country.equals(countryName);
     }
 }

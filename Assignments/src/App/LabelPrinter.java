@@ -1,25 +1,28 @@
-package App;
+package app;
 
-import com.GuestList;
+import com.Guests;
+import com.OptionHandler;
 import com.RecordReader;
 
 public class LabelPrinter {
     public static void main(String[] args) throws Exception {
-        String nameFormat = args[0];
-        int legalAge = Integer.parseInt(args[1]);
-        String countryName = args[2];
-        String fileName = args[3];
 
+
+        OptionHandler optionHandler = new OptionHandler();
+        optionHandler.extract(args);
+
+        String fileName = optionHandler.getFileName();
         RecordReader reader = new RecordReader();
         String[] records = reader.read(fileName);
 
-        GuestList list = new GuestList();
+        Guests list = new Guests();
         list.addAll(records);
 
-        String[] guests = list.getFrom(nameFormat, legalAge, countryName);
-        for (String guest : guests) {
-            System.out.println(guest);
-        }
+        optionHandler.operate(list);
 
+        String[] formattedNames = optionHandler.formattedData();
+        for (String name : formattedNames) {
+            System.out.println(name);
+        }
     }
 }

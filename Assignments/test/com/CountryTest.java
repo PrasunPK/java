@@ -2,44 +2,30 @@ package com;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertArrayEquals;
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertTrue;
 
 public class CountryTest {
-    @Test
-    public void test_instances_of_same_country_is_equal() throws Exception {
-        Country c = new Country("c");
-        Country d = new Country("c");
-        assertTrue(c.equals(d));
-    }
 
     @Test
-    public void test_getAll_gets_all_guests_provided_a_country_name_to_it_in_casual_format() throws Exception {
+    public void test_getAll_gets_all_guests_provided_a_country_name() throws Exception {
         Country c = new Country("Macedonia");
-        Guest g1 = new Guest(new Name("Brandt","Huel"),"Male","25",new Address("West Shanna","Illinois","Macedonia"));
-        Guest g2 = new Guest(new Name("Velma","Bergstrom"), "Female","24",new Address("Katlynn view","Vermont","Macedonia"));
-        c.add(g1);
-        c.add(g2);
-        String []nameList = {
-                "Mr Brandt Huel, Macedonia, 25",
-                "Ms Velma Bergstrom, Macedonia, 24"
-        };
+        Country b = new Country("Bangladesh");
+        Country r = new Country("Romania");
+        Guest g1 = new Guest(new Name("Brandt","Huel"),"Male",25,new Address(new City("West Shanna"),new State("Illinois"),new Country("Macedonia")));
+        Guest g2 = new Guest(new Name("Velma","Bergstrom"), "Female",24,new Address(new City("Katlynn view"),new State("Vermont"),new Country("Macedonia")));
+        Guest g3 = new Guest(new Name("Salman","Khan"), "Male",34,new Address(new City("Everest"),new State("Himalaya"),new Country("Bangladesh")));
+        Guest g4 = new Guest(new Name("Barinder","Bergstrom"), "Female",29,new Address(new City("Catan"),new State("Vermonteno"),new Country("Romania")));
+        c.addGuest(g1);
+        c.addGuest(g2);
+        b.addGuest(g3);
+        r.addGuest(g4);
 
-        assertArrayEquals(nameList, c.getAll("casual",20));
-    }
+        ArrayList<Guest> guests = new ArrayList<>();
+        guests.add(g1);
+        guests.add(g2);
 
-    @Test
-    public void test_getAll_gets_all_guests_name_in_formal_format_provided_a_country_name() throws Exception {
-        Country c = new Country("Macedonia");
-        Guest g1 = new Guest(new Name("Brandt","Huel"),"Male","25",new Address("West Shanna","Illinois","Macedonia"));
-        Guest g2 = new Guest(new Name("Velma","Bergstrom"), "Female","24",new Address("Katlynn view","Vermont","Macedonia"));
-        c.add(g1);
-        c.add(g2);
-        String []nameList = {
-                "Mr Huel, Brandt, Macedonia, 25",
-                "Ms Bergstrom, Velma, Macedonia, 24"
-        };
-
-        assertArrayEquals(nameList, c.getAll("formal",20));
+        assertTrue(guests.equals(c.getAll()));
     }
 }

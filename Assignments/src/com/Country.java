@@ -1,8 +1,6 @@
 package com;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 public class Country {
     private ArrayList<Guest> guestList;
@@ -13,25 +11,28 @@ public class Country {
         name = country;
     }
 
-    public void add(Guest guest) {
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
+    public void addGuest(Guest guest) {
         guestList.add(guest);
     }
 
-    public String[] getAll(String format, int legalAge) {
-        List<String> allGuest = new ArrayList<>();
-        int count = 0;
-        for (Guest guest : guestList)
-            if (guest.isAbleToConsumeAlcohol(legalAge)) {
-                allGuest.add(guest.represent(format));
-                count++;
-            }
-        return allGuest.toArray(new String[count]);
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Country)
+            return ((Country) obj).name.equals(this.name);
+        return false;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        return this == o
-                || (!(o instanceof Country))
-                || Objects.equals(((Country) o).name, name);
+    public ArrayList<Guest> getAll() {
+        ArrayList<Guest> allGuest = new ArrayList<>();
+        for (Guest guest : this.guestList) {
+            allGuest.add(guest);
+        }
+        return allGuest;
     }
+
 }

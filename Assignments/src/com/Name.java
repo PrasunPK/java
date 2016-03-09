@@ -10,7 +10,7 @@ public class Name {
     }
 
     private String casualName() {
-        return firstName + " " + lastName;
+        return String.format("%s %s",firstName,lastName);
     }
 
     private String formalName() {
@@ -22,10 +22,10 @@ public class Name {
     }
 
     public String withPrefix(String gender, String format) {
-        String name;
-        if (format.equals("casual"))
+        String name = "";
+        if (format.equals("-c"))
             name = casualName();
-        else
+        if(format.equals("-f"))
             name = formalName();
         return addPrefix(name,gender);
     }
