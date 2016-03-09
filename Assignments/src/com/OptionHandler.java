@@ -2,62 +2,68 @@ package com;
 
 import java.util.ArrayList;
 
+
 public class OptionHandler {
 
 
+    ArrayList<String> formattedData;
     private int legalAge;
     private String nameFormat;
     private String country;
-    private String fileName;
     private Guest[] data;
 
     public OptionHandler() {
+        formattedData = new ArrayList<>();
         nameFormat = null;
         legalAge = 0;
         country = null;
     }
 
-    private void setHandler(String format, String givenCountry, int age, String file) {
+    private void setHandler(String format, String givenCountry, int age) {
         nameFormat = format;
         legalAge = age;
         country = givenCountry;
-        fileName = file;
     }
 
-    private void setHandler(String format, String givenCountry, String file) {
+    private void setHandler(String format, String givenCountry) {
         nameFormat = format;
         country = givenCountry;
-        fileName = file;
     }
 
-    private void setHandler(String format, String file) {
+    private void setHandler(String format) {
         this.nameFormat = format;
-        this.fileName = file;
     }
 
-    public String getFileName() {
-        return fileName;
-    }
-
-    public void operate(Guests records) {
-        data = records.getFrom();
-        System.out.println(data.length);
-    }
-
-    public void extract(String[] options) {
-        if (options.length == 4)
-            setHandler(options[0], options[2], Integer.parseInt(options[1]),options[3]);
-        if (options.length == 3)
-            setHandler(options[0], options[1],options[2]);
-        if (options.length == 2)
+    public void operate(Guests guests, String[] options) {
+        if (options.length == 4) {
+            setHandler(options[0], options[2], Integer.parseInt(options[1]));
+            data = guests.getFrom();
+        }
+        if (options.length == 3) {
             setHandler(options[0], options[1]);
+            data = guests.getFrom(new Country(country));
+            formatNameWithCountry(data);
+        }
+        if (options.length == 2) {
+            setHandler(options[0]);
+            data = guests.getFrom();
+            formatName(data);
+        }
     }
 
-    public String[] formattedData() {
-        ArrayList<String> formattedData = new ArrayList<>();
+    private void formatName(Guest[] data) {
         for (Guest guest : data) {
             formattedData.add(guest.represent(nameFormat));
         }
+    }
+
+    private void formatNameWithCountry(Guest[] data) {
+        for (Guest guest : data) {
+            formattedData.add(guest.representWithCountry(nameFormat));
+        }
+    }
+
+    public String[] formattedData() {
         String[] content = new String[formattedData.size()];
         formattedData.toArray(content);
         return content;

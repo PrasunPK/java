@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
 
 public class OptionHandlerTest {
 
@@ -29,21 +28,30 @@ public class OptionHandlerTest {
     }
 
     @Test
-    public void test_minus_f_returns_file_name_and_option_together() throws Exception {
+    public void test_minus_c_returns_file_name_and_option_together() throws Exception {
         String[] options = {"-c", "a.txt"};
         OptionHandler optionHandler = new OptionHandler();
-        optionHandler.extract(options);
-        optionHandler.operate(list);
+        optionHandler.operate(list,options);
         String[] expected = {
                 "Ms Julius Barrows",
                 "Mr Brandt Huel",
                 "Ms Velma Bergstrom",
                 "Ms Melody Dooley"
         };
-        assertEquals("a.txt", optionHandler.getFileName());
         assertArrayEquals(expected, optionHandler.formattedData());
 
     }
 
-
+    @Test
+    public void test_minus_c_and_a_country_name_gives_all_the_guests_from_a_country() throws Exception {
+        String[] options = {"-c","Macedonia", "a.txt"};
+        OptionHandler optionHandler = new OptionHandler();
+        optionHandler.operate(list, options);
+        String[] expected = {
+                "Ms Julius Barrows, Macedonia",
+                "Mr Brandt Huel, Macedonia",
+                "Ms Velma Bergstrom, Macedonia"
+        };
+        assertArrayEquals(expected, optionHandler.formattedData());
+    }
 }

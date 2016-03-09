@@ -1,0 +1,1 @@
+sh ./run.sh app/LabelPrinter $1 $2 ./data/records
