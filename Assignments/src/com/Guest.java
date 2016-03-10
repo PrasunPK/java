@@ -25,8 +25,8 @@ public class Guest {
         return address.addCountryName(name.withPrefix(gender, option)) + ", " + age;
     }
 
-    public boolean isAbleToConsumeAlcohol(int legalAge){
-      return  age >= legalAge;
+    public boolean isAbleToConsumeAlcohol(int legalAge) {
+        return age >= legalAge;
     }
 
     public boolean isOfSameCountry(Country countryName) {

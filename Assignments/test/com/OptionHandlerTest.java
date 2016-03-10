@@ -12,7 +12,6 @@ public class OptionHandlerTest {
     Guest g2;
     Guest g3;
     Guest g4;
-    Guest g5;
 
     @Before
     public void setUp() throws Exception {
@@ -51,6 +50,18 @@ public class OptionHandlerTest {
                 "Ms Julius Barrows, Macedonia",
                 "Mr Brandt Huel, Macedonia",
                 "Ms Velma Bergstrom, Macedonia"
+        };
+        assertArrayEquals(expected, optionHandler.formattedData());
+    }
+
+    @Test
+    public void test_minus_c_and_a_country_name_and_age_gives_all_the_guests_from_a_country_who_are_above_that_age() throws Exception {
+        String[] options = {"-c","Macedonia", "20", "a.txt"};
+        OptionHandler optionHandler = new OptionHandler();
+        optionHandler.operate(list, options);
+        String[] expected = {
+                "Mr Brandt Huel, Macedonia, 25",
+                "Ms Velma Bergstrom, Macedonia, 24"
         };
         assertArrayEquals(expected, optionHandler.formattedData());
     }

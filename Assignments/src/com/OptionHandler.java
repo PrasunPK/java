@@ -36,8 +36,9 @@ public class OptionHandler {
 
     public void operate(Guests guests, String[] options) {
         if (options.length == 4) {
-            setHandler(options[0], options[2], Integer.parseInt(options[1]));
-            data = guests.getFrom();
+            setHandler(options[0], options[1], Integer.parseInt(options[2]));
+            data = guests.getFrom(new Country(country));
+            formatNameWithCountryAndAge(data);
         }
         if (options.length == 3) {
             setHandler(options[0], options[1]);
@@ -60,6 +61,13 @@ public class OptionHandler {
     private void formatNameWithCountry(Guest[] data) {
         for (Guest guest : data) {
             formattedData.add(guest.representWithCountry(nameFormat));
+        }
+    }
+
+    private void formatNameWithCountryAndAge(Guest[] data) {
+        for (Guest guest : data) {
+            if (guest.isAbleToConsumeAlcohol(legalAge))
+                formattedData.add(guest.representWithCountryAndAge(nameFormat));
         }
     }
 
