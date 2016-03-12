@@ -1,4 +1,8 @@
-package com;
+package com.guest;
+
+import com.person.Address;
+import com.person.Country;
+import com.person.Name;
 
 public class Guest {
     private Address address;
@@ -32,4 +36,5 @@ public class Guest {
     public boolean isOfSameCountry(Country countryName) {
         return address.isSame(countryName);
     }
+
 }

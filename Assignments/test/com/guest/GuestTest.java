@@ -1,5 +1,6 @@
-package com;
+package com.guest;
 
+import com.person.*;
 import org.junit.Before;
 import org.junit.Test;
 

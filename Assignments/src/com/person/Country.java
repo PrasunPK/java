@@ -1,4 +1,6 @@
-package com;
+package com.person;
+
+import com.guest.Guest;
 
 import java.util.ArrayList;
 
@@ -22,16 +24,14 @@ public class Country {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof Country)
-            return ((Country) obj).name.equals(this.name);
-        return false;
+        return (obj instanceof Country) &&
+            ((Country) obj).name.equals(this.name);
     }
 
     public ArrayList<Guest> getAll() {
         ArrayList<Guest> allGuest = new ArrayList<>();
-        for (Guest guest : this.guestList) {
+        for (Guest guest : this.guestList)
             allGuest.add(guest);
-        }
         return allGuest;
     }
 

@@ -1,14 +1,17 @@
 package app;
 
-import com.Guests;
-import com.OptionHandler;
-import com.RecordReader;
+import com.guest.Guests;
+import com.io.RecordReader;
+import com.parser.OptionHandler;
+import lib.Pair;
+
+import java.util.List;
 
 public class LabelPrinter {
     public static void main(String[] args) throws Exception {
-
-        String fileName = args[args.length-1];
-        OptionHandler optionHandler = new OptionHandler();
+        OptionHandler optionHandler = new OptionHandler(args);
+        optionHandler.extract();
+        String fileName = optionHandler.getFileName();
 
 
         RecordReader reader = new RecordReader();
@@ -16,7 +19,8 @@ public class LabelPrinter {
 
         Guests list = new Guests();
         list.addAll(records);
-        optionHandler.operate(list, args);
+        List<Pair<String, String>> filters = optionHandler.extract();
+        optionHandler.operate(list, filters);
 
 
         String[] formattedNames = optionHandler.formattedData();

@@ -1,4 +1,4 @@
-package com;
+package com.person;
 
 public class State {
     private String name;

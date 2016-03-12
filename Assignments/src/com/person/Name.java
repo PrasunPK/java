@@ -1,4 +1,4 @@
-package com;
+package com.person;
 
 public class Name {
     private final String firstName;
@@ -10,29 +10,23 @@ public class Name {
     }
 
     private String casualName() {
-        return String.format("%s %s",firstName,lastName);
+        return String.format("%s %s", firstName, lastName);
     }
 
     private String formalName() {
-        return lastName + ", " + firstName;
-    }
-
-    private boolean isMale(String gender) {
-        return gender.equals("Male");
+        return String.format("%s, %s", lastName , firstName);
     }
 
     public String withPrefix(String gender, String format) {
         String name = "";
         if (format.equals("-c"))
             name = casualName();
-        if(format.equals("-f"))
+        if (format.equals("-f"))
             name = formalName();
-        return addPrefix(name,gender);
+        return addPrefix(name, gender);
     }
 
     private String addPrefix(String name, String gender) {
-        if (isMale(gender))
-            return Gender.MALE + " " + name;
-        return Gender.FEMALE + " " + name;
+        return Gender.valueOf(gender.toUpperCase()) + " " + name;
     }
 }

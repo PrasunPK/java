@@ -1,4 +1,4 @@
-package com;
+package com.person;
 
 import org.junit.Assert;
 import org.junit.Test;

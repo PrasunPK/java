@@ -1,25 +1,24 @@
-package com;
+package com.guest;
+
+import com.person.*;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Guests {
 
-    private ArrayList<Guest> list;
-    private List<Country> countries;
+    private ArrayList<Guest> guests;
 
     public Guests() {
-        list = new ArrayList<>();
-        countries = new ArrayList<>();
+        guests = new ArrayList<>();
     }
 
     public boolean add(Guest guest) {
-        return list.add(guest);
+        return guests.add(guest);
     }
 
     public Guest[] getFrom() {
         ArrayList<Guest> guestsOfACountry = new ArrayList<>();
-        for (Guest guest : list)
+        for (Guest guest : guests)
             guestsOfACountry.add(guest);
         Guest[] guests = new Guest[guestsOfACountry.size()];
         guestsOfACountry.toArray(guests);
@@ -28,7 +27,7 @@ public class Guests {
 
     public Guest[] getFrom(Country countryName) {
         ArrayList<Guest> guestsOfACountry = new ArrayList<>();
-        for (Guest guest : list)
+        for (Guest guest : guests)
             if (guest.isOfSameCountry(countryName))
                 guestsOfACountry.add(guest);
         Guest[] guests = new Guest[guestsOfACountry.size()];
@@ -46,7 +45,7 @@ public class Guests {
             String gender = record[2];
             int age = Integer.parseInt(record[3]);
             guest = new Guest(name, gender, age, address);
-            list.add(guest);
+            guests.add(guest);
         }
     }
 
