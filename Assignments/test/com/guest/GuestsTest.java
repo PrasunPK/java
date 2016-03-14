@@ -50,21 +50,4 @@ public class GuestsTest {
         list.getFrom(new Country("Antarctica"));
     }
 
-//    @Test
-    public void test_getFrom_gets_all_guests_from_the_list() throws Exception {
-        String []records = {
-                "Julius,Barrows,Female,18,Veda haven,Vermont,Macedonia",
-                "Melody,Dooley,Female,31,West Shanna,Vermont,Bangladesh",
-                "Brandt,Huel,Female,25,West Shanna,Illinois,Macedonia"
-        };
-
-        Guests guestList = new Guests();
-        guestList.addAll(records);
-        Guest[] expectedList = {
-                g1,
-                g4,
-                g2
-        };
-        assertArrayEquals(expectedList, guestList.getFrom());
-    }
 }

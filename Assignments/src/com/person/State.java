@@ -6,4 +6,9 @@ public class State {
     public State(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

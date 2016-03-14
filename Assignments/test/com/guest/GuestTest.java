@@ -34,17 +34,4 @@ public class GuestTest {
         assertTrue(expected.equals(guest.represent("-c")));
     }
 
-    @Test
-    public void test_represents_a_name_with_prefix_and_country_name() throws Exception {
-        Guest guest = new Guest(new Name("Sashi","Kumar"), "Male", 18,address);
-        String expected = "Mr Sashi Kumar, India";
-        assertTrue(expected.equals(guest.representWithCountry("-c")));
-    }
-
-    @Test
-    public void test_represents_a_name_with_prefix_country_name_and_age() throws Exception {
-        Guest guest = new Guest(new Name("Sashi","Kumar"), "Male", 18,address);
-        String expected = "Mr Sashi Kumar, India, 18";
-        assertTrue(expected.equals(guest.representWithCountryAndAge("-c")));
-    }
 }

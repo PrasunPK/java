@@ -18,4 +18,9 @@ public class Address {
     public boolean isSame(Country countryName) {
         return this.country.equals(countryName);
     }
+
+    @Override
+    public String toString() {
+        return city.toString() +", "+ state + "\n" + country;
+    }
 }

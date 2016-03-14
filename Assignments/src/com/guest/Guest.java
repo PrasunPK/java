@@ -21,20 +21,16 @@ public class Guest {
         return name.withPrefix(gender, option);
     }
 
-    public String representWithCountry(String option) {
-        return address.addCountryName(name.withPrefix(gender, option));
-    }
-
-    public String representWithCountryAndAge(String option) {
-        return address.addCountryName(name.withPrefix(gender, option)) + ", " + age;
-    }
-
     public boolean isAbleToConsumeAlcohol(int legalAge) {
         return age >= legalAge;
     }
 
     public boolean isOfSameCountry(Country countryName) {
         return address.isSame(countryName);
+    }
+
+    public String representAddress() {
+        return address.toString();
     }
 
 }
