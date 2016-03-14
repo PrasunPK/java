@@ -18,7 +18,7 @@ public class Guest {
     }
 
     public boolean isAbleToConsumeAlcohol(int legalAge) {
-        return age >= legalAge;
+        return age > legalAge;
     }
 
     public boolean isOfSameCountry(Country countryName) {

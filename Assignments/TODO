@@ -1,0 +1,125 @@
+Make a Library with features below
+
+Print labels on the invitation covers.
+Given data :
+           List of records in a file
+           Input data format :
+                             firstName,lastName,gender,age,city,state,country
+           Guest name representation :
+                                     Mr/Ms Name Surname
+                                     Mr/Ms Surname, Name
+           Prefix :
+                  Male - Mr
+                  Female - Ms
+_____________________________________________________________________________________
+Version : 1
+-----------
+
+$ cat records
+  Gavin,Hyatt,Male,36,Crooks ton,Illinois,Romania
+  Julius,Barrows,Female,18,Veda haven,Vermont,Macedonia
+
+$java LabelPrinter casual records
+$java LabelPrinter -c records         // This method has to be implemented
+  Mr Gavin Hyatt
+  Ms Julius Barrows
+
+$java LabelPrinter formal records
+ Mr Hyatt, Gavin
+ Ms Barrows, Barrows
+
+_____________________________________________________________________________________
+Guest name representation :
+                           Mr/Ms Name Surname, country
+                           Mr/Ms Surname, Name, country
+
+_____________________________________________________________________________________
+Version : 2
+-----------
+
+$ cat records
+  Gavin,Hyatt,Male,36,Crooks ton,Illinois,Romania
+  Julius,Barrows,Female,18,Veda haven,Vermont,Macedonia
+
+$java LabelPrinter casual Macedonia records
+$java LabelPrinter -c Macedonia records
+  Ms Julius Barrows, Macedonia
+
+$java LabelPrinter formal Macedonia records
+$java LabelPrinter -f Macedonia records
+ Ms Barrows, Julius, Macedonia
+
+_____________________________________________________________________________________
+
+Given user wants to view according to the age of drinking alcohol.
+
+Guest name representation :
+                           Mr/Ms Name Surname, country, age
+                           Mr/Ms Surname, Name, country, age
+
+_____________________________________________________________________________________
+
+Version : 3
+-----------
+
+$ cat records
+  Gavin,Hyatt,Male,36,Crooks ton,Illinois,Romania
+  Julius,Barrows,Female,28,Veda haven,Vermont,Macedonia
+
+$java LabelPrinter casual 20 Macedonia records
+$java LabelPrinter -c 20 Macedonia records
+  Ms Julius Barrows, Macedonia, 28
+
+$java LabelPrinter formal 20 records Romania
+$java LabelPrinter -f 20 records Romania
+  Ms Hyatt, Gavin, Romania, 36
+_____________________________________________________________________________________
+
+Get data as list in the option handler.
+Manipulate on the list based on the options came
+Country should be independent while fetching Guests
+
+_____________________________________________________________________________________
+
+Refactoring Options: ( *** Paused ***)
+--------------------
+
+Labels.sh
+---------
+sh ./run.sh app/LabelPrinter --format -c --file <file name>
+
+$ sh Labels.sh --format -c
+Ms Julius Barrows
+
+_____________________________________________________________________________________
+
+Version : 4
+-----------
+
+Requirement:
+-----------
++----------------------+
+| Mr John Smith        |
+|----------------------|
+| New Delhi, Karnataka |
+| India                |
++----------------------+
+
+Height will be the same for all the guests, invitation cover label
+Assuming width will be same for all
+
+Command:
+-------
+
+$ sh Labels.sh -c Banpattern
++----------------------+
+| Mr John Smith        |
+|----------------------|
+| New Delhi, Karnataka |
+| India                |
++----------------------+
+
+------------------------------------------------------------------------------------------
+
+filter a guest by all the filters at the same time
+and then the filtered list will be added.
