@@ -31,7 +31,7 @@ public class GuestTest {
     public void test_represents_a_name_with_prefix() throws Exception {
         Guest guest = new Guest(new Name("Sashi","Kumar"), "Male", 18,address);
         String expected = "Mr Sashi Kumar";
-        assertTrue(expected.equals(guest.represent("-c")));
+        assertTrue(expected.equals(guest.representName("-c")));
     }
 
 }

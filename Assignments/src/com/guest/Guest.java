@@ -17,10 +17,6 @@ public class Guest {
         this.address = address;
     }
 
-    public String represent(String option) {
-        return name.withPrefix(gender, option);
-    }
-
     public boolean isAbleToConsumeAlcohol(int legalAge) {
         return age >= legalAge;
     }
@@ -33,4 +29,7 @@ public class Guest {
         return address.toString();
     }
 
+    public String representName(String nameFormat) {
+            return name.withPrefix(gender, nameFormat);
+    }
 }

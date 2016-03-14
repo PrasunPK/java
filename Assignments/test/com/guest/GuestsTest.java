@@ -38,16 +38,9 @@ public class GuestsTest {
 
     @Test
     public void test_getFrom_provides_all_the_guests_from_a_particular_country_given_to_it() throws Exception {
-        Guest[] expectedGuestList = {g1, g2, g3};
-        assertArrayEquals(expectedGuestList, list.getFrom(new Country("Macedonia")));
+        Guest[] expectedGuestList = {g1, g2, g3, g4, g5};
+        assertArrayEquals(expectedGuestList, list.getGuests());
     }
 
-
-    @Test
-    public void test_getFrom_throws_error_if_the_given_country_is_not_valid() throws Exception {
-        thrown.expect(RuntimeException.class);
-        thrown.expectMessage("Country Not Found");
-        list.getFrom(new Country("Antarctica"));
-    }
 
 }

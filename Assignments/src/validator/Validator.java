@@ -17,7 +17,7 @@ public class Validator {
     public Guest[] validate(Guests guests) {
         ArrayList<Filter> filters = manageFilters(availableFilters);
         List<Guest> filteredData = new ArrayList<>();
-        for (Guest guest : guests.getFrom())
+        for (Guest guest : guests.getGuests())
             if (verify(guest, filters))
                 filteredData.add(guest);
         return filteredData.toArray(new Guest[filteredData.size()]);

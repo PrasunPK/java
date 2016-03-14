@@ -16,23 +16,12 @@ public class Guests {
         return guests.add(guest);
     }
 
-    public Guest[] getFrom() {
+    public Guest[] getGuests() {
         ArrayList<Guest> guestsOfACountry = new ArrayList<>();
         for (Guest guest : guests)
             guestsOfACountry.add(guest);
         Guest[] guests = new Guest[guestsOfACountry.size()];
         guestsOfACountry.toArray(guests);
-        return guests;
-    }
-
-    public Guest[] getFrom(Country countryName) {
-        ArrayList<Guest> guestsOfACountry = new ArrayList<>();
-        for (Guest guest : guests)
-            if (guest.isOfSameCountry(countryName))
-                guestsOfACountry.add(guest);
-        Guest[] guests = new Guest[guestsOfACountry.size()];
-        guestsOfACountry.toArray(guests);
-        if (guests.length == 0) throw new RuntimeException("Country Not Found");
         return guests;
     }
 
