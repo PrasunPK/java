@@ -1,4 +1,4 @@
-package validator;
+package validator.filters;
 
 import com.guest.Guest;
 

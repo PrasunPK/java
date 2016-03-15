@@ -2,22 +2,23 @@ package com.guest;
 
 import com.person.Address;
 import com.person.Country;
-import com.person.Name;
+import com.person.Gender;
+import com.person.name.Name;
 
 public class Guest {
     private Address address;
     private int age;
-    private String gender;
+    private Gender gender;
     private Name name;
 
-    public Guest(Name name, String gender, int age, Address address) {
+    public Guest(Name name, Gender gender, int age, Address address) {
         this.name = name;
         this.gender = gender;
         this.age = age;
         this.address = address;
     }
 
-    public boolean isAbleToConsumeAlcohol(int legalAge) {
+    public boolean isLegalToConsumeAlcohol(int legalAge) {
         return age > legalAge;
     }
 
@@ -30,6 +31,6 @@ public class Guest {
     }
 
     public String representName(String nameFormat) {
-            return name.withPrefix(gender, nameFormat);
+            return name.withPrefix(gender,nameFormat);
     }
 }

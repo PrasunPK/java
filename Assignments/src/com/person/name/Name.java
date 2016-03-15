@@ -1,4 +1,6 @@
-package com.person;
+package com.person.name;
+
+import com.person.Gender;
 
 public class Name {
     private final String firstName;
@@ -17,7 +19,7 @@ public class Name {
         return String.format("%s, %s", lastName , firstName);
     }
 
-    public String withPrefix(String gender, String format) {
+    public String withPrefix(Gender gender, String format) {
         String name = "";
         if (format.equals("-c"))
             name = casualName();
@@ -26,7 +28,8 @@ public class Name {
         return addPrefix(name, gender);
     }
 
-    private String addPrefix(String name, String gender) {
-        return Gender.valueOf(gender.toUpperCase()) + " " + name;
+    private String addPrefix(String name, Gender gender) {
+        return gender + " " + name;
     }
+
 }

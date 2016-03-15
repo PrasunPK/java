@@ -1,4 +1,4 @@
-package validator;
+package validator.filters;
 
 import com.guest.Guest;
 
@@ -11,6 +11,6 @@ public class FilterByAge implements Filter {
 
     @Override
     public boolean filter(Guest guest) {
-        return guest.isAbleToConsumeAlcohol(age);
+        return guest.isLegalToConsumeAlcohol(age);
     }
 }

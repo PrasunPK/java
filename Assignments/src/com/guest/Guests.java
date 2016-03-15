@@ -1,6 +1,7 @@
 package com.guest;
 
 import com.person.*;
+import com.person.name.Name;
 
 import java.util.ArrayList;
 
@@ -33,7 +34,7 @@ public class Guests {
             Address address = new Address(new City(record[4]), new State(record[5]), new Country(record[6]));
             String gender = record[2];
             int age = Integer.parseInt(record[3]);
-            guest = new Guest(name, gender, age, address);
+            guest = new Guest(name, Gender.valueOf(gender), age, address);
             guests.add(guest);
         }
     }

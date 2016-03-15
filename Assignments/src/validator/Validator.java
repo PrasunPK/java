@@ -3,6 +3,9 @@ package validator;
 import com.guest.Guest;
 import com.guest.Guests;
 import lib.Pair;
+import validator.filters.Filter;
+import validator.filters.FilterByAge;
+import validator.filters.FilterByCountry;
 
 import java.util.ArrayList;
 import java.util.List;

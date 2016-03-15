@@ -18,7 +18,6 @@ public class LabelPrinter {
         String fileName = optionHandler.getFileName();
         String nameFormat = optionHandler.getNameFormat();
 
-
         RecordReader reader = new RecordReader();
         String[] records = reader.read(fileName);
 
@@ -27,12 +26,11 @@ public class LabelPrinter {
 
         Validator validator = new Validator(filters);
         Guest[] validatedGuests = validator.validate(list);
-
-
+        
         String[] decorators = {" ", "+", "|", "-"};
         Decoration decor = new Decoration(decorators);
 
-        String []decoratedNames = decor.decorateAll(validatedGuests, nameFormat);
+        String[] decoratedNames = decor.decorateAll(validatedGuests, nameFormat);
         ResultPrinter printer = new ResultPrinter();
         printer.print(decoratedNames);
     }

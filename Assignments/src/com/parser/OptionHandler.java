@@ -8,7 +8,6 @@ import java.util.List;
 
 public class OptionHandler {
 
-
     private final String[] commandLineArguments;
     private String fileName;
     private String nameFormat;
@@ -22,7 +21,7 @@ public class OptionHandler {
         for (int i = 0; i < commandLineArguments.length; i++) {
             String option = commandLineArguments[i];
             if (option.equals("--format"))
-                nameFormat = commandLineArguments[i+1];
+                nameFormat = commandLineArguments[i + 1];
             if (option.equals("--file"))
                 fileName = commandLineArguments[i + 1];
             if (option.contains("--") && !option.equals("--file"))

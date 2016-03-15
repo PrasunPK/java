@@ -1,6 +1,7 @@
 package com.guest;
 
 import com.person.*;
+import com.person.name.Name;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -24,11 +25,11 @@ public class GuestsTest {
     @Before
     public void setUp() throws Exception {
         list = new Guests();
-        g1 = new Guest(new Name("Julius", "Barrows"), "Female", 18, new Address(new City("Veda haven"), new State("Vermont"), new Country("Macedonia")));
-        g2 = new Guest(new Name("Brandt", "Huel"), "Male", 25, new Address(new City("West Shanna"), new State("Illinois"), new Country("Macedonia")));
-        g3 = new Guest(new Name("Velma", "Bergstrom"), "Female", 24, new Address(new City("Katlynn view"), new State("Vermont"), new Country("Macedonia")));
-        g4 = new Guest(new Name("Melody", "Dooley"), "Female", 31, new Address(new City("West Shanna"), new State("Vermont"), new Country("Bangladesh")));
-        g5 = new Guest(new Name("Velma", "Bergstrom"), "Female", 24, new Address(new City("West Shanna"), new State("South Carolina"), new Country("Bangladesh")));
+        g1 = new Guest(new Name("Julius", "Barrows"), Gender.FEMALE, 18, new Address(new City("Veda haven"), new State("Vermont"), new Country("Macedonia")));
+        g2 = new Guest(new Name("Brandt", "Huel"), Gender.MALE, 25, new Address(new City("West Shanna"), new State("Illinois"), new Country("Macedonia")));
+        g3 = new Guest(new Name("Velma", "Bergstrom"), Gender.FEMALE, 24, new Address(new City("Katlynn view"), new State("Vermont"), new Country("Macedonia")));
+        g4 = new Guest(new Name("Melody", "Dooley"), Gender.FEMALE, 31, new Address(new City("West Shanna"), new State("Vermont"), new Country("Bangladesh")));
+        g5 = new Guest(new Name("Velma", "Bergstrom"), Gender.FEMALE, 24, new Address(new City("West Shanna"), new State("South Carolina"), new Country("Bangladesh")));
         list.add(g1);
         list.add(g2);
         list.add(g3);
